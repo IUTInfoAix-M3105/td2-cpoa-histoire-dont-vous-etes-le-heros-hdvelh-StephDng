@@ -17,11 +17,16 @@ public class Scenario {
 
 	/* TO BE COMPLETED */
 	public Scenario(GUIManager gui, Event startevent){
-
 	}
 
 	public String run (){
-		return "test";
+		if (this.getHead()== null)
+		{
+			this.gui.output(this.MSG_EMPTY_SCENARIO);
+			return this.MSG_EMPTY_SCENARIO;
+		}
+		Event currentEvent = this.getHead();
+		return currentEvent.run();
 	}
 
 	/* MAIN */

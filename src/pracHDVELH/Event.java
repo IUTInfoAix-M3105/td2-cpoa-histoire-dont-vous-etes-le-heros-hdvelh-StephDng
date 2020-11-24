@@ -18,7 +18,30 @@ public class Event extends NodeMultiple {
 	public static final String PROMPT_ANSWER = "Answer: ";
 	public static final String WARNING_MSG_INTEGER_EXPECTED = "Please input a integer within range!";
 
+	private String texte;
+	private GUIManager interf;
+
 	public Event(GUIManager gui, String text){
+		this.texte = texte;
+		this.interf = interf;
+	}
+
+	public String run (){
+		if (!this.hasDaughters()){ //pas d'enfant renvoie la fin
+			// renvoie la fin
+			return this.getData();
+		}
+		else
+			//affiche l'évènement courant
+			//System.out.println(this.texte);
+			interf.outputln(this.texte); //sortie strandard -> console mais trkl si on change
+			//demande à l'utilisateur de choisir
+			interf.outputln();
+			Scanner scanner = interf.getInputReader();
+			int a;
+			a = scanner.nextInt();
+			//selectionner l'évènement choisi
+			//exécution de l'évènement choisi (fonction run)
 
 	}
 //	/**
@@ -63,13 +86,13 @@ public class Event extends NodeMultiple {
 //		/* TO BE COMPLETED */
 //	}
 //
-//	/* Methods */
-//	/**
-//	 * @see pracHDVELH.NodeMultiple#getData()
-//	 */
-//	public String getData() {
-//		/* TO BE COMPLETED */
-//	}
+	/* Methods */
+	/**
+	 * @see pracHDVELH.NodeMultiple#getData()
+	 */
+	public String getData() {
+		return this.texte;
+	}
 //
 //	/**
 //	 * @see pracHDVELH.NodeMultiple#setData(Object)
@@ -92,34 +115,40 @@ public class Event extends NodeMultiple {
 //	 * @param daughter
 //	 * @param i
 //	 */
-//	public void setDaughter(Event daughter, int i) {
-//		/* TO BE COMPLETED */
-//	}
-//
-//	/**
-//	 * @return the gui
-//	 */
-//	public GUIManager getGui() {
-//		/* TO BE COMPLETED */
-//	}
-//
-//	/**
-//	 * @param gui the gui to set
-//	 */
-//	public void setGui(GUIManager gui) {
-//		/* TO BE COMPLETED */
-//	}
-//
-//	/**
-//	 * @return the id
-//	 */
-//	public int getId() {
-//		/* TO BE COMPLETED */
-//	}
-//
-//	/* Methods */
-//	/* TO BE COMPLETED */
-//	}
+	public void setDaughter(Event daughter, int i) {
+		super.setDaughter(daughter,i);
+	}
+
+	/**
+	 * @return the gui
+	 */
+	public GUIManager getGui() {
+		return gui;
+	}
+
+	/**
+	 * @param gui the gui to set
+	 */
+	public void setGui(GUIManager gui) {
+		this.gui = gui;
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/* Methods */
+	/* TO BE COMPLETED */
+	public Event run(){
+		gui.output(getData());
+		int i = gui.getAnswer()-1;
+
+		if(i> NODE_MAX_ARITY) return null;
+		return getDaughter(i)
+	}
 }
 
 // eof
