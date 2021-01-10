@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  * @author prost
- *
+ * @Mise à jour : Stéphanie DANG
  */
 public class GUIManager {
   private PrintStream out, err;
@@ -45,6 +45,9 @@ public class GUIManager {
    */
   public Scanner getInputReader() {
 	return inputReader;
+  }
+  public void setInputReader(Scanner inputReader) {
+      this.inputReader = inputReader;
   }
 
   /**

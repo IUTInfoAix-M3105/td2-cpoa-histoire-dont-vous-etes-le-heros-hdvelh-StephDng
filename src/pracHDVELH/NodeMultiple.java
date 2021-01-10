@@ -5,35 +5,32 @@
  */
 package pracHDVELH;
 
-import myUtils.ErrorNaiveHandler;
-
 /**
  * @author prost
- *
+ * @Modification : Stéphanie DANG
  */
 public class NodeMultiple {
 	public static final int ERROR_STATUS_INDEX_OUT_OF_RANGE = -1;
 	public static final String ERROR_MSG_INDEX_OUT_OF_RANGE = "Index out of range";
 	public static int NODE_MAX_ARITY = 10;
 
+	private Object data;
+	private NodeMultiple[] daughters;
+
 /* Overridden methods */
 @Override
-public String toString() {
-		/* TO BE COMPLETED */
-	}
-//
-//	/* Getters/Setters */
-//	/**
-//	 * Gets the {@code i}th daughter node.
-//	 *
-//	 * Aborts if the given index {@code i} is out of range.
-//	 *
-//	 * @param i the index of the daughter node.
-//	 * @return the {@code i}th daughter node, or {@code null} if it does not exist.
-//	 */
-	public NodeMultiple getDaughter(int i) {
-		/* TO BE COMPLETED */
-	}
+public String toString() { return data.toString();}
+
+	/* Getters/Setters */
+	/**
+	 * Gets the {@code i}th daughter node.
+	 *
+	 * Aborts if the given index {@code i} is out of range.
+	 *
+	 * @param i the index of the daughter node.
+	 * @return the {@code i}th daughter node, or {@code null} if it does not exist.
+	 */
+	public NodeMultiple getDaughter(int i) { return daughters[i]; }
 //
 	/**
 	 * Sets the {@code i}th daughter node to the input parameter {@code daughter}.
@@ -76,22 +73,23 @@ public String toString() {
 	 * @param daughter
 	 */
 	public void addDaughter(NodeMultiple daughter) {
-		/* TO BE COMPLETED */
+		if (daughter == null) {return;}
+		int i = 0;
+		while (i < daughters.length)
+		{
+		}
+
 	}
 
 	/**
 	 * @return the content data
 	 */
-	public Object getData() {
-		return data;
-	}
+	public Object getData() { return data; }
 
 	/**
 	 * @param data
 	 */
-	public void setData(Object data) {
-		this.data = data;
-	}
+	public void setData(Object data) { this.data = data; }
 
 	/**
 	 * @return {@code true} if and only if this node has at least one non-null
@@ -109,17 +107,20 @@ public String toString() {
 	 * Default constructor.
 	 */
 	public NodeMultiple() {
-		/* TO BE COMPLETED */
+		super();
+		data = new Object();
+		daughters = new NodeMultiple[NODE_MAX_ARITY];
 	}
-//
-//	/**
-//	 * Constructor. Sets the content data to {@code data} and creates an empty set
-//	 * of daughters.
-//	 *
-//	 * @param data
-//	 */
+
+	/**
+	 * Constructor. Sets the content data to {@code data} and creates an empty set
+	 * of daughters.
+	 *
+	 * @param data
+	 */
 	public NodeMultiple(Object data) {
-		/* TO BE COMPLETED */
+		this();
+		this.data = data;
 	}
 }
 
